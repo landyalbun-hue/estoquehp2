@@ -1,0 +1,115 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+  body {
+    @apply bg-ink-50 text-ink-900 font-sans;
+    background-color: var(--bg-body);
+    color: var(--text-primary);
+  }
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: var(--border-color) transparent;
+  }
+  *::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+  *::-webkit-scrollbar-thumb {
+    background-color: var(--border-color);
+    border-radius: 9999px;
+  }
+  *::-webkit-scrollbar-track {
+    background: transparent;
+  }
+}
+
+@layer components {
+  .card {
+    @apply rounded-xl border shadow-card;
+    background-color: var(--bg-card);
+    border-color: var(--border-color);
+  }
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 rounded-lg font-medium transition-all duration-150 disabled:opacity-50 disabled:cursor-not-allowed select-none;
+  }
+  .btn-primary {
+    @apply btn text-white hover:opacity-90 active:opacity-100 px-4 py-2 text-sm shadow-soft;
+    background-color: var(--brand-600);
+  }
+  .btn-primary:hover {
+    background-color: var(--brand-700);
+  }
+  .btn-secondary {
+    @apply btn border px-4 py-2 text-sm;
+    background-color: var(--bg-card);
+    color: var(--text-primary);
+    border-color: var(--border-color);
+  }
+  .btn-secondary:hover {
+    background-color: var(--ink-50);
+  }
+  .btn-ghost {
+    @apply btn px-3 py-2 text-sm;
+    color: var(--text-muted);
+  }
+  .btn-ghost:hover {
+    background-color: var(--ink-100);
+    color: var(--text-primary);
+  }
+  .btn-danger {
+    @apply btn bg-red-600 text-white hover:bg-red-700 active:bg-red-800 px-4 py-2 text-sm shadow-soft;
+  }
+  .btn-icon {
+    @apply inline-flex items-center justify-center rounded-lg transition-all duration-150 select-none;
+  }
+  .input {
+    @apply w-full rounded-lg border px-3 py-2 text-sm placeholder-ink-400 outline-none transition-all duration-150 focus:ring-2;
+    background-color: var(--bg-card);
+    color: var(--text-primary);
+    border-color: var(--border-color);
+  }
+  .input:focus {
+    border-color: var(--brand-500);
+    --tw-ring-color: color-mix(in srgb, var(--brand-500) 20%, transparent);
+  }
+  .label {
+    @apply block text-xs font-semibold uppercase tracking-wide mb-1.5;
+    color: var(--text-muted);
+  }
+  .chip {
+    @apply inline-flex items-center gap-1.5 rounded-full px-2.5 py-1 text-xs font-medium;
+  }
+  .table-row-hover {
+    @apply transition-colors duration-100;
+  }
+  .table-row-hover:hover {
+    background-color: var(--ink-50);
+  }
+}
+
+@media print {
+  body * {
+    visibility: hidden;
+  }
+  .print-area,
+  .print-area * {
+    visibility: visible;
+  }
+  .print-area {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+  }
+  .no-print {
+    display: none !important;
+  }
+}
